@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".views.BrowseFragment">
 
-
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_kats"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_kat" />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/settings"-->
-<!--        android:textSize="20sp"-->
-<!--        android:backgroundTint="@color/design_default_color_secondary" />-->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:id="@+id/pbLoadin"
+        />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:backgroundTint="@color/design_default_color_secondary"-->
-<!--        android:text="@string/details"-->
-<!--        android:textSize="20sp" />-->
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentBottom="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:visibility="gone"/>
+</RelativeLayout>
