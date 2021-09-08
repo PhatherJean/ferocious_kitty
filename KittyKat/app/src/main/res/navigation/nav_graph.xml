@@ -17,6 +17,10 @@
         <action
             android:id="@+id/action_browseFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <argument
+            android:name="num"
+            app:argType="integer"
+            android:defaultValue="10" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -27,5 +31,9 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.kittykat.views.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_browseFragment"
+            app:destination="@id/browseFragment" />
+    </fragment>
 </navigation>

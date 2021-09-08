@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.kittykat.model.Kat
 import com.example.kittykat.R
 import com.example.kittykat.databinding.FragmentBrowseBinding
@@ -26,13 +27,17 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
 
 
 
+    private  val args : BrowseFragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentBrowseBinding.bind(view)
         initViews()
         setupObservers()
-        katViewModel.fetchKatList(10)
+
+        katViewModel.fetchKatList(args.num)
+
 
         binding.btnSettings.setOnClickListener{
             val action = BrowseFragmentDirections.actionBrowseFragmentToSettingsFragment()
@@ -54,11 +59,11 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
         }
 
     }
-
     private fun handleSuccess(kat: List<Kat>)
     {
         (binding.rvKats.adapter as KatAdapter).updateList(kat)
     }
+
     private fun handleFailure(errorMsg : String)
     {
         System.out.println(errorMsg)
